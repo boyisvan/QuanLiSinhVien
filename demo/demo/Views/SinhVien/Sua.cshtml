@@ -1,0 +1,32 @@
+﻿@model demo.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Sua";
+}
+
+<div class="container w-25 border p-0">
+    <h5 class="alert alert-warning">Sửa thông tin sinh viên</h5>
+    <form asp-action="Sua" class="p-2 w-100">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <label asp-for="ID">Mã sinh viên </label>
+                <input asp-for="ID" class="form-control" />
+            </div>
+            <div>
+                <label asp-for="Name">Họ tên sinh viên </label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div>
+                <label asp-for="Age">Tuổi</label>   
+                <input asp-for="Age" class="form-control" />
+            </div>
+            <br />
+            <div class="d-f justify-content-between ">
+                 <input type="submit" value="Save" class="btn btn-primary" />
+                 <a asp-action="Index" class="btn btn-outline-danger">Back to List</a>
+            </div>
+        </form>
+</div>
+
+
+

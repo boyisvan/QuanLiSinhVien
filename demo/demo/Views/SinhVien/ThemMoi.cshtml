@@ -1,0 +1,29 @@
+﻿@model demo.Models.SinhVien
+
+@{
+    ViewData["Title"] = "ThemMoi";
+}
+
+
+<div class="container border p-0" style="width:370px;">
+    <h3 class="alert alert-success text-center">Thêm mới sinh viên</h3>
+    <form class="card-body" asp-action="ThemMoi" asp-controller="SinhVien" method="post">
+        <div>
+            <label asp-for="ID">Mã sinh viên </label>
+            <input asp-for="ID" class="form-control"/>
+        </div>
+        <div>
+            <label asp-for="Name">Họ tên sinh viên </label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="Age">Tuổi</label>
+            <input asp-for="Age" class="form-control" />
+        </div>
+        <br />
+        <div class="d-flex justify-content-between">
+            <input type="submit" value="Thêm mới" class="btn btn-outline-primary"/>
+            <a class="btn btn-outline-info" href="/SinhVien">Quay lại</a>
+        </div>
+    </form>
+</div>

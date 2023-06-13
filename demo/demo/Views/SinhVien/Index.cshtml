@@ -1,0 +1,98 @@
+﻿@model List<demo.Models.SinhVien>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="navbar">
+    <a href="/SinhVien/ThemMoi" data-bs-toggle="modal" data-bs-target="#themmoi" class="btn btn-success">Thêm mới</a>
+    <form asp-action="TimKiem" > 
+        <div class="d-flex divtimkiem">
+
+            <input class="form-control input-timkiem" placeholder="Tìm kiếm theo mã" name="datatimkiem" type="text"/>
+            <input type="submit" class="btn btn-outline-success atimkiem" " value="Tìm kiếm"/>
+            @*button type="submit" class="btn btn-outline-success atimkiem" href="/SinhVien/TimKiem">Tìm kiếm</button>*@
+        </div>
+    </form>
+</div>
+<table class="table table-bordered text-center table-hover">
+    <tr>
+        <th>Mã sinh viên</th>
+        <th>Họ và tên</th>
+        <th>Tuổi</th>
+        <th>Thao tác</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+           <td> @item.ID </td>
+           <td>@item.Name</td>
+            <td>@item.Age</td>
+            <td>
+                <a href="/SinhVien/ChiTiet?id=@item.ID"  class="btn btn-sm btn-outline-info">Chi tiết</a>
+                <a href="/SinhVien/Sua?id=@item.ID" class="btn btn-sm btn-outline-warning">Sửa</a>
+                <a onclick="return confirm('Bạn có chắc chắn muốn xóa dữ liệu này?')" href="/SinhVien/Xoa?id=@item.ID" class="btn btn-sm btn-danger">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+<div class="modal fade" id="themmoi" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Thêm mới sinh viên
+                    @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="card-body" asp-action="ThemMoi" asp-controller="SinhVien" method="post">
+                                <div>
+                                    <label name="ID">Mã sinh viên </label>
+                                    <input name="ID" class="form-control" />
+                                </div>
+                                <div>
+                                    <label name="Name">Họ tên sinh viên </label>
+                                    <input name="Name" class="form-control" />
+                                </div>
+                                <div>
+                                    <label name="Age">Tuổi</label>
+                                    <input name="Age" class="form-control" />
+                                </div>
+                                <br />
+                                <div class="d-flex justify-content-between">
+                                    <input type="submit" value="Thêm mới" class="btn btn-outline-primary" />
+                                    <a class="btn btn-outline-info" href="/SinhVien">Quay lại</a>
+                                </div>
+                            </form>
+                            @*form dữ liêu*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<style>
+    th{
+        width:25%;
+    }
+
+    .divtimkiem{
+        height:40px;
+        width:370px;
+    }
+    .input-timkiem{
+        width:75%;
+        margin-right:5px;
+    }
+    .atimkiem{
+        width:25%;
+    }
+</style>

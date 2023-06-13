@@ -1,0 +1,35 @@
+﻿@model demo.Models.SinhVien
+@{
+    ViewData["Title"] = "ChiTiet";
+}
+
+<div class="container w-25">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Thuộc tính</th>
+            <th>Dữ liệu</th>
+        </tr>
+        <tr>
+            <td>Mã sinh viên</td>
+            <td>@Model.ID</td>
+        </tr>
+        <tr>
+            <td>Tên sinh viên</td>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <td>Tuổi</td>
+            <td>@Model.Age</td>
+        </tr>
+        <tr class="text-center">
+            <td>
+                <a href="/SinhVien/Sua?id=@ViewBag.Id" class="btn btn-outline-warning">Sửa</a>
+            </td>
+            <td>
+                <a href="/SinHVien" class="btn btn-outline-primary">Quay lại</a>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+
